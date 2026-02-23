@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 mkdir -p public
 
-# playlist create
 ls songs/*.mp3 | sed "s/^/file '/;s/$/'/" > list.txt
 
-# LIVE RADIO (AUDIO FORCE SELECT)
 ffmpeg -re -f concat -safe 0 -stream_loop -1 -i list.txt \
 -map a:0 \
 -vn \
