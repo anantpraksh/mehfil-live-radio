@@ -4,16 +4,22 @@ mkdir -p public
 
 ls songs/*.mp3 | sed "s/^/file '/;s/$/'/" > list.txt
 
-ffmpeg -re -f concat -safe 0 -stream_loop -1 -i list.txt \
--map a:0 \
--vn \
--c:a aac \
--b:a 128k \
--ar 44100 \
--ac 2 \
--af "aresample=async=1" \
+#!/bin/bash
+
+mkdir -p public
+
+#!/bin/bash
+
+echo "Starting Mehfil Live Radio..."
+
+mkdir -p public
+
+ffmpeg -re -stream_loop -1 -i input.mp3 \
+-c:a aac -b:a 128k \
 -f hls \
 -hls_time 6 \
 -hls_list_size 5 \
--hls_flags delete_segments+append_list \
-public/live.m3u8
+-hls_flags delete_segments \
+public/live.m3u8 &
+
+python3 -m http.server $PORT --directory public
