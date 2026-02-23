@@ -1,16 +1,6 @@
-#!/bin/sh
-
-mkdir -p public
-
-ls songs/*.mp3 | sed "s/^/file '/;s/$/'/" > list.txt
-
 #!/bin/bash
 
-mkdir -p public
-
-#!/bin/bash
-
-echo "Starting Mehfil Live Radio..."
+echo "Starting Live Radio..."
 
 mkdir -p public
 

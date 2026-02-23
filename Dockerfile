@@ -7,4 +7,4 @@ COPY . .
 RUN mkdir -p public
 RUN chmod +x start.sh
 
-CMD ["./start.sh"]
+CMD ["bash ./start.sh"]
